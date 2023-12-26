@@ -3,6 +3,12 @@
     <head>
     </head>
     <body>
-        
+        <canvas id="lienzo"></canvas>
+        <script>
+            const lienzo = document.getElementById("lienzo");
+            const contexto = lienzo.getContext("2d");
+            lienzo.width = window.innerWidth;
+            lienzo.height = window.innerHeight;
+        </script>
     </body>
 </html>
