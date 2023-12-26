@@ -44,8 +44,8 @@
                     contexto.restore();
                 }
                 avanza(){
-                    this.posx += Math.cos(this.rot)
-                    this.posy += Math.sin(this.rot)
+                    this.posx += Math.cos(this.rot-Math.PI/2)
+                    this.posy += Math.sin(this.rot-Math.PI/2)
                 }
                 giraIzquierda(){
                     this.rot -= 0.1
@@ -61,6 +61,16 @@
             lienzo.height = window.innerHeight;
             const jugador = new Nave();
             jugador.dibuja();
+            window.onkeydown = function(e){
+                if(e.key == "w"){
+                    jugador.avanza()
+                }else if(e.key == "a"){
+                    jugador.giraIzquierda()
+                }else if(e.key == "d"){
+                    jugador.giraDerecha()
+                }
+                jugador.dibuja()
+            }
         </script>
     </body>
 </html>
