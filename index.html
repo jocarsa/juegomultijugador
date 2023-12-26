@@ -43,14 +43,24 @@
                     
                     contexto.restore();
                 }
+                avanza(){
+                    this.posx += Math.cos(this.rot)
+                    this.posy += Math.sin(this.rot)
+                }
+                giraIzquierda(){
+                    this.rot -= 0.1
+                }
+                giraDerecha(){
+                    this.rot += 0.1
+                }
             }
             
             const lienzo = document.getElementById("lienzo");
             const contexto = lienzo.getContext("2d");
             lienzo.width = window.innerWidth;
             lienzo.height = window.innerHeight;
-            const nave = new Nave();
-            nave.dibuja();
+            const jugador = new Nave();
+            jugador.dibuja();
         </script>
     </body>
 </html>
