@@ -8,10 +8,36 @@
     <body>
         <canvas id="lienzo"></canvas>
         <script>
+            
+            class Nave{
+                constructor(){
+                    this.posx = Math.random()*window.innerWidth
+                    this.posy = Math.random()*window.innerHeight
+                    this.rot = Math.random()*Math.PI*2
+                    this.color = "red"
+                }
+                dibuja(){
+                    contexto.fillStyle = this.color
+                    contexto.beginPath()
+                    contexto.moveTo(this.posx,this.posy-10);
+                    contexto.lineTo(this.posx-5,this.posy+5);
+                    contexto.lineTo(this.posx+5,this.posy+5);
+                    contexto.closePath();
+                    contexto.fill();
+                    contexto.fillStyle = "white"
+                    contexto.beginPath();
+                    contexto.arc(this.posx,this.posy,2,0,Math.PI*2,true)
+                    contexto.closePath();
+                    contexto.fill()
+                }
+            }
+            
             const lienzo = document.getElementById("lienzo");
             const contexto = lienzo.getContext("2d");
             lienzo.width = window.innerWidth;
             lienzo.height = window.innerHeight;
+            const nave = new Nave();
+            nave.dibuja();
         </script>
     </body>
 </html>
