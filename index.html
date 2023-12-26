@@ -17,18 +17,31 @@
                     this.color = "red"
                 }
                 dibuja(){
-                    contexto.fillStyle = this.color
-                    contexto.beginPath()
-                    contexto.moveTo(this.posx,this.posy-10);
-                    contexto.lineTo(this.posx-5,this.posy+5);
-                    contexto.lineTo(this.posx+5,this.posy+5);
+                    contexto.save(); 
+                    contexto.translate(this.posx, this.posy); 
+                    contexto.rotate(this.rot); 
+                    contexto.fillStyle = this.color;
+                    contexto.beginPath();
+                          
+                    const x1 = 0;
+                    const y1 = -10;
+                    const x2 = -5;
+                    const y2 = 5;
+                    const x3 = 5;
+                    const y3 = 5;
+
+                    contexto.moveTo(x1, y1);
+                    contexto.lineTo(x2, y2);
+                    contexto.lineTo(x3, y3);
                     contexto.closePath();
                     contexto.fill();
-                    contexto.fillStyle = "white"
+                    contexto.fillStyle = "white";
                     contexto.beginPath();
-                    contexto.arc(this.posx,this.posy,2,0,Math.PI*2,true)
+                    contexto.arc(0, 0, 2, 0, Math.PI * 2, true);
                     contexto.closePath();
-                    contexto.fill()
+                    contexto.fill();
+                    
+                    contexto.restore();
                 }
             }
             
