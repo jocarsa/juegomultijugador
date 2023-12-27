@@ -44,7 +44,7 @@
         console.log(datos);
           contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           jugador1.dibuja();
-          if(datos.position.x != jugador1.posx){
+          if(datos.position.x != jugador1.posx ){
              
               
                 contexto.save();
@@ -85,6 +85,11 @@
                       datos.projectiles[i].posy,
                       3,0,Math.PI*2,true)
                 contexto.fill()
+                   if (checkPlayerProjectileCollision(jugador1, datos.projectiles[i]) && jugador1.color != datos.projectiles[i].color) {
+                    // Collision detected, handle it here
+                        console.log("Collision detected between player and projectile");
+                           window.location = window.location
+                  }
               }
         }
         

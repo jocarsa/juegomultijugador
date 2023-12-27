@@ -7,3 +7,14 @@ function getRandomHexColor() {
   
   return hexColor;
 }
+
+function checkPlayerProjectileCollision(player, projectile) {
+  const dx = player.posx - projectile.posx;
+  const dy = player.posy - projectile.posy;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  // Define a collision threshold, e.g., 10 pixels
+  const collisionThreshold = 10;
+
+  return distance < collisionThreshold;
+}
