@@ -41,7 +41,21 @@
         // Process data from the server
         let  datos = JSON.parse(event.data)
         console.log(datos);
-          
+          if(datos.position.x != jugador1.posx){
+              contexto.beginPath()
+              contexto.arc(datos.position.x,datos.position.y,3,0,Math.PI*2,true)
+            contexto.fill()
+              //console.log(datos.projectiles)
+              for(let i = 0;i<datos.projectiles.length;i++){
+                  //console.log("bala")
+                  contexto.beginPath()
+                  contexto.arc(
+                      datos.projectiles[i].posx,
+                      datos.projectiles[i].posy,
+                      3,0,Math.PI*2,true)
+                contexto.fill()
+              }
+        }
         
       });
 
