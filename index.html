@@ -45,9 +45,36 @@
           contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           jugador1.dibuja();
           if(datos.position.x != jugador1.posx){
-              contexto.beginPath()
-              contexto.arc(datos.position.x,datos.position.y,3,0,Math.PI*2,true)
-            contexto.fill()
+             
+              
+                contexto.save();
+                contexto.translate(datos.position.x, datos.position.y);
+              contexto.rotate(datos.rotation);
+          contexto.fillStyle = datos.color;
+          contexto.beginPath();
+
+          const x1 = 0;
+          const y1 = -10;
+          const x2 = -5;
+          const y2 = 5;
+          const x3 = 5;
+          const y3 = 5;
+
+          contexto.moveTo(x1, y1);
+          contexto.lineTo(x2, y2);
+          contexto.lineTo(x3, y3);
+          contexto.closePath();
+          contexto.fill();
+          contexto.fillStyle = "white";
+          contexto.beginPath();
+          contexto.arc(0, 0, 2, 0, Math.PI * 2, true);
+          contexto.closePath();
+          contexto.fill();
+
+          contexto.restore();
+              
+              
+              
               //console.log(datos.projectiles)
               for(let i = 0;i<datos.projectiles.length;i++){
                   //console.log("bala")
