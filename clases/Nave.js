@@ -101,6 +101,9 @@ class Nave {
     getRotation() {
     return this.rot;
   }
+    getColor() {
+    return this.color;
+  }
 
   getProjectiles() {
     return this.proyectiles;

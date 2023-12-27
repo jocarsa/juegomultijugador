@@ -9,6 +9,7 @@
     <canvas id="lienzo"></canvas>
     <script src="clases/Nave.js"></script>
     <script src="clases/Proyectil.js"></script>
+       <script src="funciones/funciones.js"></script>
     <script src="funciones/controles.js"></script>
     <script src="funciones/colisiones.js"></script>
     <script>
@@ -16,8 +17,8 @@
       const contexto = lienzo.getContext("2d");
       lienzo.width = window.innerWidth;
       lienzo.height = window.innerHeight;
-
-      const jugador1 = new Nave("red");
+        
+      const jugador1 = new Nave(getRandomHexColor());
       jugador1.dibuja();
 
       var gira1 = 0;
@@ -48,6 +49,7 @@
               //console.log(datos.projectiles)
               for(let i = 0;i<datos.projectiles.length;i++){
                   //console.log("bala")
+                  contexto.fillStyle = datos.color
                   contexto.beginPath()
                   contexto.arc(
                       datos.projectiles[i].posx,
@@ -69,7 +71,9 @@
             jugador1.avanza();
           }
           jugador1.applyInertia();
-          contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
+           // contexto.fillStyle = "rgb(255,255,255,0.1)"
+          //contexto.fillRect(0, 0, window.innerWidth, window.innerHeight);
+            contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           jugador1.dibuja();
           if (disparar1) {
             jugador1.fireProjectile();
@@ -81,6 +85,7 @@
             position: jugador1.getPosition(),
             rotation: jugador1.getRotation(),
             projectiles: jugador1.getProjectiles(),
+              color: jugador1.getColor(),
           };
           socket.send(JSON.stringify(playerData));
 
