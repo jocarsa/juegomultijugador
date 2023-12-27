@@ -22,7 +22,7 @@ async def handle_client(websocket, path):
         connected_clients.remove(websocket)
 
 # Start the WebSocket server on port 3000
-start_server = websockets.serve(handle_client, "localhost", 3000)
+start_server = websockets.serve(handle_client, "192.168.1.38", 3000)
 
 # Run the WebSocket server
 asyncio.get_event_loop().run_until_complete(start_server)

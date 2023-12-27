@@ -16,52 +16,58 @@
       const contexto = lienzo.getContext("2d");
       lienzo.width = window.innerWidth;
       lienzo.height = window.innerHeight;
-      const jugador1 = new Nave("red");
-      
+      const jugador1 = new Nave("red");      
       jugador1.dibuja();
       
-
       var gira1 = 0;
       var avanza1 = false;
       var disparar1 = false;
       
+      // WebSocket connection
+      const socket = new WebSocket("ws://192.168.1.38:3000");
+
+      socket.addEventListener("open", (event) => {
+        console.log("WebSocket connection opened");
+      });
+
+      socket.addEventListener("error", (event) => {
+        console.error("WebSocket error:", event);
+      });
+
+      socket.addEventListener("message", (event) => {
+        // Handle incoming WebSocket messages here
+        const data = JSON.parse(event.data);
+        // Process data from the server
+      });
 
       window.onload = function () {
         window.addEventListener("keydown", onKeyDown);
         window.addEventListener("keyup", onKeyUp);
-
-        let temporizador = setTimeout(bucle, 10);
-
-        
+        let temporizador = setTimeout(bucle, 10); 
         function bucle() {
           jugador1.gira(gira1);
           if (avanza1) {
             jugador1.avanza();
           }
           jugador1.applyInertia();
-
-          
-
           contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
           jugador1.dibuja();
-          
-
           if (disparar1) {
             jugador1.fireProjectile();
           }
-
-          
-
-          
-
           jugador1.dibujaProyectiles();
-         
+
+          // Send player's position, rotation, and projectile positions to the server
+          const playerData = {
+            position: jugador1.getPosition(),
+            rotation: jugador1.getRotation(),
+            projectiles: jugador1.getProjectiles(),
+          };
+          socket.send(JSON.stringify(playerData));
 
           clearTimeout(temporizador);
           temporizador = setTimeout(bucle, 10);
-        }
-
-        
+        }   
       };
     </script>
   </body>

@@ -95,4 +95,14 @@ class Nave {
             this.lastProjectileTime = currentTime;
           }
         }
+    getPosition() {
+        return { x: this.posx, y: this.posy };
       }
+    getRotation() {
+    return this.rot;
+  }
+
+  getProjectiles() {
+    return this.proyectiles;
+  }
+}
