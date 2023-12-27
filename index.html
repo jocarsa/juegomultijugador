@@ -42,6 +42,8 @@
         // Process data from the server
         let  datos = JSON.parse(event.data)
         console.log(datos);
+          contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
+          jugador1.dibuja();
           if(datos.position.x != jugador1.posx){
               contexto.beginPath()
               contexto.arc(datos.position.x,datos.position.y,3,0,Math.PI*2,true)
@@ -59,6 +61,7 @@
               }
         }
         
+          
       });
 
       setTimeout(function () {
@@ -73,8 +76,8 @@
           jugador1.applyInertia();
            // contexto.fillStyle = "rgb(255,255,255,0.1)"
           //contexto.fillRect(0, 0, window.innerWidth, window.innerHeight);
-            contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
-          jugador1.dibuja();
+            
+          
           if (disparar1) {
             jugador1.fireProjectile();
           }
