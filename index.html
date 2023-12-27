@@ -39,22 +39,10 @@
         // Handle incoming WebSocket messages here
         const data = JSON.parse(event.data);
         // Process data from the server
-        console.log(event.data);
-
-        // Check if the received data contains other players' positions and projectiles
-        if (data.players) {
-          // Loop through the received player data and paint other ships and projectiles
-          data.players.forEach((playerData) => {
-            // Create or update the player's ship using the Nave class
-            const otherPlayer = new Nave(playerData.color);
-            otherPlayer.setPosition(playerData.position.x, playerData.position.y);
-            otherPlayer.setRotation(playerData.rotation);
-            otherPlayer.setProjectiles(playerData.projectiles);
-
-            // Paint the other player's ship
-            otherPlayer.dibuja();
-          });
-        }
+        let  datos = JSON.parse(event.data)
+        console.log(datos);
+          
+        
       });
 
       setTimeout(function () {

@@ -105,4 +105,19 @@ class Nave {
   getProjectiles() {
     return this.proyectiles;
   }
+    // Method to set the position of the ship
+  setPosition(x, y) {
+    this.posx = x;
+    this.posy = y;
+  }
+
+  // Method to set the rotation of the ship
+  setRotation(rotation) {
+    this.rot = rotation;
+  }
+
+  // Method to set the projectiles for the ship
+  setProjectiles(projectiles) {
+    this.proyectiles = projectiles;
+  }
 }
