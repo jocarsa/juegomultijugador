@@ -41,8 +41,10 @@
         const data = JSON.parse(event.data);
         // Process data from the server
         let  datos = JSON.parse(event.data)
-        console.log(datos);
-          contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
+        //console.log(datos);
+          //contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
+          contexto.fillStyle = "rgba(255,255,255,0.1)"
+          contexto.fillRect(0, 0, window.innerWidth, window.innerHeight)
           jugador1.dibuja();
           if(datos.position.x != jugador1.posx ){
              
@@ -92,22 +94,22 @@
                   }
               }
         }
-        
+          
           
       });
-
-      setTimeout(function () {
-        window.addEventListener("keydown", onKeyDown);
+window.addEventListener("keydown", onKeyDown);
         window.addEventListener("keyup", onKeyUp);
-        let temporizador = setTimeout(bucle, 10);
+        
+      setTimeout(function () {
+        
+        let temporizador = setTimeout(bucle, 30);
         function bucle() {
           jugador1.gira(gira1);
           if (avanza1) {
             jugador1.avanza();
           }
           jugador1.applyInertia();
-           // contexto.fillStyle = "rgb(255,255,255,0.1)"
-          //contexto.fillRect(0, 0, window.innerWidth, window.innerHeight);
+           
             
           
           if (disparar1) {
@@ -122,12 +124,14 @@
             projectiles: jugador1.getProjectiles(),
               color: jugador1.getColor(),
           };
-          socket.send(JSON.stringify(playerData));
+           socket.send(JSON.stringify(playerData));
 
           clearTimeout(temporizador);
           temporizador = setTimeout(bucle, 10);
         }
       },1000)
+        
+        
     </script>
   </body>
 </html>
