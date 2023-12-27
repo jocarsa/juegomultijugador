@@ -98,7 +98,7 @@
         }
         fireProjectile() {
           const currentTime = Date.now();
-          if (currentTime - this.lastProjectileTime >= 1000) {
+          if (currentTime - this.lastProjectileTime >= 500) {
             const velocityX = Math.cos(this.rot - Math.PI / 2);
             const velocityY = Math.sin(this.rot - Math.PI / 2);
             this.proyectiles.push(new Proyectil(this.posx, this.posy, this.rot, velocityX, velocityY, this.color));
