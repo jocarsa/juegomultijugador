@@ -44,7 +44,7 @@
 
           contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
           jugador1.dibuja();
-          jugador2.dibuja();
+          
 
           if (disparar1) {
             jugador1.fireProjectile();
@@ -52,10 +52,10 @@
 
           
 
-          checkCollisions(jugador1, jugador2);
+          
 
           jugador1.dibujaProyectiles();
-          jugador2.dibujaProyectiles();
+         
 
           clearTimeout(temporizador);
           temporizador = setTimeout(bucle, 10);
