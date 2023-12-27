@@ -7,22 +7,23 @@
   </head>
   <body>
     <canvas id="lienzo"></canvas>
-      <script src="clases/Nave.js"></script>
-      <script src="clases/Proyectil.js"></script>
-      <script src="funciones/controles.js"></script>
-      <script src="funciones/colisiones.js"></script>
+    <script src="clases/Nave.js"></script>
+    <script src="clases/Proyectil.js"></script>
+    <script src="funciones/controles.js"></script>
+    <script src="funciones/colisiones.js"></script>
     <script>
       const lienzo = document.getElementById("lienzo");
       const contexto = lienzo.getContext("2d");
       lienzo.width = window.innerWidth;
       lienzo.height = window.innerHeight;
-      const jugador1 = new Nave("red");      
+
+      const jugador1 = new Nave("red");
       jugador1.dibuja();
-      
+
       var gira1 = 0;
       var avanza1 = false;
       var disparar1 = false;
-      
+
       // WebSocket connection
       const socket = new WebSocket("ws://192.168.1.38:3000");
 
@@ -38,13 +39,28 @@
         // Handle incoming WebSocket messages here
         const data = JSON.parse(event.data);
         // Process data from the server
-          console.log(event.data)
+        console.log(event.data);
+
+        // Check if the received data contains other players' positions and projectiles
+        if (data.players) {
+          // Loop through the received player data and paint other ships and projectiles
+          data.players.forEach((playerData) => {
+            // Create or update the player's ship using the Nave class
+            const otherPlayer = new Nave(playerData.color);
+            otherPlayer.setPosition(playerData.position.x, playerData.position.y);
+            otherPlayer.setRotation(playerData.rotation);
+            otherPlayer.setProjectiles(playerData.projectiles);
+
+            // Paint the other player's ship
+            otherPlayer.dibuja();
+          });
+        }
       });
 
-      socket.addEventListener("open", (event) => {
+      setTimeout(function () {
         window.addEventListener("keydown", onKeyDown);
         window.addEventListener("keyup", onKeyUp);
-        let temporizador = setTimeout(bucle, 10); 
+        let temporizador = setTimeout(bucle, 10);
         function bucle() {
           jugador1.gira(gira1);
           if (avanza1) {
@@ -68,8 +84,8 @@
 
           clearTimeout(temporizador);
           temporizador = setTimeout(bucle, 10);
-        }   
-      });
+        }
+      },1000)
     </script>
   </body>
 </html>
