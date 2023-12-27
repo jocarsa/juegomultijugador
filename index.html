@@ -17,16 +17,14 @@
       lienzo.width = window.innerWidth;
       lienzo.height = window.innerHeight;
       const jugador1 = new Nave("red");
-      const jugador2 = new Nave("blue");
+      
       jugador1.dibuja();
-      jugador2.dibuja();
+      
 
       var gira1 = 0;
       var avanza1 = false;
       var disparar1 = false;
-      var gira2 = 0;
-      var avanza2 = false;
-      var disparar2 = false;
+      
 
       window.onload = function () {
         window.addEventListener("keydown", onKeyDown);
@@ -42,11 +40,7 @@
           }
           jugador1.applyInertia();
 
-          jugador2.gira(gira2);
-          if (avanza2) {
-            jugador2.avanza();
-          }
-          jugador2.applyInertia();
+          
 
           contexto.clearRect(0, 0, window.innerWidth, window.innerHeight);
           jugador1.dibuja();
@@ -56,9 +50,7 @@
             jugador1.fireProjectile();
           }
 
-          if (disparar2) {
-            jugador2.fireProjectile();
-          }
+          
 
           checkCollisions(jugador1, jugador2);
 
