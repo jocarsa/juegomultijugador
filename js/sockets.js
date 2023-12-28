@@ -67,13 +67,22 @@
               //console.log(datos.projectiles)
               for(let i = 0;i<datos.projectiles.length;i++){
                   //console.log("bala")
+                  contexto.strokeStyle = datos.color
                   contexto.fillStyle = datos.color
+                  contexto.lineWidth = 1;
                   contexto.beginPath()
-                  contexto.arc(
+                  /*contexto.arc(
                       datos.projectiles[i].posx,
                       datos.projectiles[i].posy,
                       3,0,Math.PI*2,true)
-                contexto.fill()
+                contexto.fill()*/
+                  
+                  contexto.moveTo(datos.projectiles[i].posx, datos.projectiles[i].posy)
+                    contexto.lineTo(
+                        datos.projectiles[i].posx+Math.cos(datos.projectiles[i].angle+Math.PI/2)*10,
+                        datos.projectiles[i].posy+Math.sin(datos.projectiles[i].angle+Math.PI/2)*10
+                    )
+                  contexto.stroke();
                    
                   if (checkPlayerProjectileCollision(jugador1, datos.projectiles[i]) && jugador1.color != datos.projectiles[i].color) {
                     // Collision detected, handle it here

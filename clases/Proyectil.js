@@ -15,8 +15,13 @@ class Proyectil {
         dibuja() {
           contexto.fillStyle = this.color;
           contexto.beginPath();
-          contexto.arc(this.posx, this.posy, 2, 0, Math.PI * 2, true);
-          contexto.closePath();
-          contexto.fill();
+          //contexto.arc(this.posx, this.posy, 2, 0, Math.PI * 2, true);
+          //contexto.closePath();
+            contexto.moveTo(this.posx, this.posy)
+            contexto.lineTo(
+                this.posx+Math.cos(this.angle+Math.PI/2)*10,
+                this.posy+Math.sin(this.angle+Math.PI/2)*10
+            )
+          contexto.stroke();
         }
       }
