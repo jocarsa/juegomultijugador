@@ -28,7 +28,7 @@
                     document.getElementById("jugadores").appendChild(elemento)
                 }
         
-        console.log(datos);
+        //console.log(datos);
           //contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           contexto.fillStyle = "rgba(255,255,255,0.1)"
           contexto.fillRect(0, 0, window.innerWidth, window.innerHeight)

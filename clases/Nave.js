@@ -36,6 +36,8 @@ class Nave {
           this.posy += this.velocityY;
           contexto.rotate(this.rot);
           contexto.fillStyle = this.color;
+            contexto.strokeStyle = this.color;
+            contexto.lineWidth = 0.5;
           contexto.beginPath();
 
           const x1 = 0;
@@ -55,6 +57,10 @@ class Nave {
           contexto.arc(0, 0, 2, 0, Math.PI * 2, true);
           contexto.closePath();
           contexto.fill();
+           
+            contexto.beginPath();
+            contexto.arc(0,0,6,0,Math.PI*2,true)
+            contexto.stroke()
 
           contexto.restore();
         }
