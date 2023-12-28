@@ -1,3 +1,6 @@
+
+window.addEventListener("keydown", onKeyDown);
+        window.addEventListener("keyup", onKeyUp);
 function onKeyDown(e) {
           if (e.key === "a") {
             gira1 = -1;
