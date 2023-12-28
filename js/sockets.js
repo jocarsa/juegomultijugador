@@ -30,7 +30,7 @@
         
         //console.log(datos);
           //contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
-          contexto.fillStyle = "rgba(255,255,255,0.1)"
+          contexto.fillStyle = "rgba(0,0,0,0.1)"
           contexto.fillRect(0, 0, window.innerWidth, window.innerHeight)
           jugador1.dibuja();
           if(datos.position.x != jugador1.posx ){

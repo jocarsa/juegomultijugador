@@ -3,8 +3,14 @@ html, head {
     height: 100%; 
     overflow: hidden; 
 }
+html,body{
+    padding:0px;
+    margin:0px;
+    
+}
         body{
             font-family:monospace;
+            
         }
         #jugadores div{
             border-width:3px;
@@ -15,4 +21,14 @@ html, head {
             border-radius:30px;
             margin:5px;
         }
+canvas{
+    image-rendering: pixelated; image-rendering: crisp-edges;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+#lienzo{
+    mix-blend-mode: screen;
+}
+
         

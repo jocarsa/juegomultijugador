@@ -5,6 +5,18 @@
         uniqueID = generateUniqueID();
         localStorage.setItem("uniqueID", uniqueID);
       }
+        const lienzoestrellas =  document.getElementById("lienzoestrellas")
+        const contextoestrellas = lienzoestrellas.getContext("2d")
+        lienzoestrellas.width = window.innerWidth;
+        lienzoestrellas.height = window.innerHeight;
+contextoestrellas.fillStyle = "grey"
+    for(let i = 0;i<1000;i++){
+        contextoestrellas.fillRect(
+            Math.random()*window.innerWidth,
+             Math.random()*window.innerHeight,
+            1,1
+        )
+    }
         
       const lienzo = document.getElementById("lienzo");
       const contexto = lienzo.getContext("2d");
