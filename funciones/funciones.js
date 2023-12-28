@@ -18,3 +18,11 @@ function checkPlayerProjectileCollision(player, projectile) {
 
   return distance < collisionThreshold;
 }
+
+ function generateUniqueID() {
+    // You can use various browser data to generate a unique ID
+    const navigatorInfo = `${navigator.userAgent}${navigator.language}${navigator.platform}`;
+    const screenInfo = `${screen.width}${screen.height}${screen.colorDepth}`;
+    const id = btoa(navigatorInfo + screenInfo);
+    return id;
+    }
