@@ -11,6 +11,7 @@ class Nave {
           this.angularAcceleration = 0.01;
           this.proyectiles = [];
           this.lastProjectileTime = 0;
+            this.puntos = 100
         }
         dibuja() {
           contexto.save();
@@ -100,6 +101,9 @@ class Nave {
       }
     getRotation() {
     return this.rot;
+  }
+    getPuntos() {
+    return this.puntos;
   }
     getColor() {
     return this.color;
