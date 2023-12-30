@@ -17,8 +17,8 @@
         
         
         if(document.getElementById(datos.color.replace("#",""))){
-                  //console.log("existe")
-                    document.getElementById(datos.color.replace("#","")).innerHTML = datos.puntos
+                  console.log("existe")
+                    document.getElementById(datos.color.replace("#","")).innerHTML = datos.usuario+":"+datos.puntos
                 }else{
                     console.log("no existe")
                     let elemento = document.createElement("div")
@@ -28,7 +28,7 @@
                     document.getElementById("jugadores").appendChild(elemento)
                 }
         
-        //console.log(datos);
+        console.log(datos);
           //contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           contexto.fillStyle = "rgba(0,0,0,0.1)"
           contexto.fillRect(0, 0, window.innerWidth, window.innerHeight)
@@ -93,6 +93,7 @@
                       jugador1.posx = Math.random() * window.innerWidth;
                         jugador1.posy = Math.random() * window.innerHeight;
                   }
+                  
               }
         }
           

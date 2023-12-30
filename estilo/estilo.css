@@ -6,7 +6,7 @@ html, head {
 html,body{
     padding:0px;
     margin:0px;
-    
+    background:black;
 }
         body{
             font-family:monospace;
@@ -29,6 +29,23 @@ canvas{
 }
 #lienzo{
     mix-blend-mode: screen;
+}
+#inicio{
+    width:400px;
+    height:400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-200px;
+    margin-top:-200px;
+    text-align:center;
+    color:white;
+    z-index:10000;
+}
+#inicio input,#inicio button{
+    box-sizing: border-box;
+    width:50%;
+    margin-top:10px;
 }
 
         

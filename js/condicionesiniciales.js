@@ -29,3 +29,4 @@ contextoestrellas.fillStyle = "grey"
       var gira1 = 0;
       var avanza1 = false;
       var disparar1 = false;
+var usuario = "";
