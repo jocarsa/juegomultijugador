@@ -1,5 +1,6 @@
 import asyncio
 import websockets
+import ssl
 
 # Maintain a set of connected clients
 connected_clients = set()
@@ -21,8 +22,12 @@ async def handle_client(websocket, path):
         # Remove the client from the set of connected clients when they disconnect
         connected_clients.remove(websocket)
 
-# Start the WebSocket server on port 3000
-start_server = websockets.serve(handle_client, "192.168.1.38", 3000)
+# Create an SSL context
+ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+ssl_context.load_cert_chain("www.jotauve.es_ssl_certificate.cer", "www.jotauve.es_private_key.key")
+
+# Start the WebSocket server on port 3000 with SSL/TLS
+start_server = websockets.serve(handle_client, "jotauve.es", 3000, ssl=ssl_context)
 
 # Run the WebSocket server
 asyncio.get_event_loop().run_until_complete(start_server)
