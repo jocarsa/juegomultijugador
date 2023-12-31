@@ -1,5 +1,5 @@
 // WebSocket connection
-      const socket = new WebSocket("ws://192.168.1.38:3000");
+      const socket = new WebSocket("wss://jotauve.es:3000");
 
       socket.addEventListener("open", (event) => {
         console.log("WebSocket connection opened");
@@ -17,7 +17,7 @@
         
         
         if(document.getElementById(datos.color.replace("#",""))){
-                  console.log("existe")
+                  //console.log("existe")
                     document.getElementById(datos.color.replace("#","")).innerHTML = datos.usuario+":"+datos.puntos
                 }else{
                     console.log("no existe")
@@ -28,7 +28,7 @@
                     document.getElementById("jugadores").appendChild(elemento)
                 }
         
-        console.log(datos);
+        //console.log(datos);
           //contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           contexto.fillStyle = "rgba(0,0,0,0.1)"
           contexto.fillRect(0, 0, window.innerWidth, window.innerHeight)
