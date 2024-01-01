@@ -1,7 +1,9 @@
 
 document.getElementById("enviar").onclick = function(){
     usuario = document.getElementById("usuario").value
+	micolor = document.getElementById("color").value
     document.getElementById("inicio").style.display = "none"
+	jugador1.color = micolor
     let temporizador = setTimeout(bucle, 30);
         function bucle() {
           jugador1.gira(gira1);
@@ -22,7 +24,7 @@ document.getElementById("enviar").onclick = function(){
             position: jugador1.getPosition(),
             rotation: jugador1.getRotation(),
             projectiles: jugador1.getProjectiles(),
-              color: jugador1.getColor(),
+              color: micolor,
               puntos: jugador1.getPuntos(),
               id:uniqueID,
               usuario:usuario

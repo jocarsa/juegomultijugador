@@ -1,4 +1,5 @@
-
+var anchura = 1920/2
+var altura = 1080/2
         // Generate or retrieve a unique ID for the player
       let uniqueID = localStorage.getItem("uniqueID");
       if (!uniqueID) {
@@ -7,21 +8,21 @@
       }
         const lienzoestrellas =  document.getElementById("lienzoestrellas")
         const contextoestrellas = lienzoestrellas.getContext("2d")
-        lienzoestrellas.width = window.innerWidth;
-        lienzoestrellas.height = window.innerHeight;
+        lienzoestrellas.width = anchura;
+        lienzoestrellas.height = altura;
 contextoestrellas.fillStyle = "grey"
     for(let i = 0;i<1000;i++){
         contextoestrellas.fillRect(
-            Math.random()*window.innerWidth,
-             Math.random()*window.innerHeight,
+            Math.random()*anchura,
+             Math.random()*altura,
             1,1
         )
     }
         
       const lienzo = document.getElementById("lienzo");
       const contexto = lienzo.getContext("2d");
-      lienzo.width = window.innerWidth;
-      lienzo.height = window.innerHeight;
+      lienzo.width = anchura;
+      lienzo.height = altura;
         
       const jugador1 = new Nave(getRandomHexColor());
       jugador1.dibuja();
@@ -30,3 +31,4 @@ contextoestrellas.fillStyle = "grey"
       var avanza1 = false;
       var disparar1 = false;
 var usuario = "";
+var micolor = "#ffffff"

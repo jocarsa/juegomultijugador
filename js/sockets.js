@@ -15,23 +15,24 @@
         // Process data from the server
         let  datos = JSON.parse(event.data)
         
+		
         
-        if(document.getElementById(datos.color.replace("#",""))){
+        if(document.getElementById(datos.usuario)){
                   //console.log("existe")
-                    document.getElementById(datos.color.replace("#","")).innerHTML = datos.usuario+":"+datos.puntos
+                    document.getElementById(datos.usuario).innerHTML = datos.usuario+":"+datos.puntos
                 }else{
                     console.log("no existe")
                     let elemento = document.createElement("div")
-                    elemento.id = datos.color.replace("#","")
+                    elemento.id = datos.usuario
                     elemento.style.color = datos.color
                     //console.log(datos.color)
                     document.getElementById("jugadores").appendChild(elemento)
                 }
         
-        //console.log(datos);
+        console.log(datos);
           //contexto.clearRect(0, 0, window.innerWidth, window.innerHeight)
           contexto.fillStyle = "rgba(0,0,0,0.1)"
-          contexto.fillRect(0, 0, window.innerWidth, window.innerHeight)
+          contexto.fillRect(0, 0, anchura, altura)
           jugador1.dibuja();
           if(datos.position.x != jugador1.posx ){
              
@@ -40,6 +41,7 @@
                 contexto.translate(datos.position.x, datos.position.y);
               contexto.rotate(datos.rotation);
           contexto.fillStyle = datos.color;
+		  contexto.strokeStyle = datos.color;
           contexto.beginPath();
 
           const x1 = 0;
@@ -76,7 +78,7 @@
                       datos.projectiles[i].posy,
                       3,0,Math.PI*2,true)
                 contexto.fill()*/
-                  
+                  contexto.strokeStyle = jugador1.color;
                   contexto.moveTo(datos.projectiles[i].posx, datos.projectiles[i].posy)
                     contexto.lineTo(
                         datos.projectiles[i].posx+Math.cos(datos.projectiles[i].angle+Math.PI/2)*10,
@@ -90,8 +92,8 @@
                            //window.location = window.location
                       jugador1.puntos--
                       console.log(jugador1.puntos)
-                      jugador1.posx = Math.random() * window.innerWidth;
-                        jugador1.posy = Math.random() * window.innerHeight;
+                      jugador1.posx = Math.random() * anchura;
+                        jugador1.posy = Math.random() * altura;
                   }
                   
               }

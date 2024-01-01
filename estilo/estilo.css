@@ -26,6 +26,7 @@ canvas{
     position:absolute;
     top:0px;
     left:0px;
+	width:100%;
 }
 #lienzo{
     mix-blend-mode: screen;
@@ -42,7 +43,7 @@ canvas{
     color:white;
     z-index:10000;
 }
-#inicio input,#inicio button{
+#inicio input,#inicio button,#inicio select{
     box-sizing: border-box;
     width:50%;
     margin-top:10px;
